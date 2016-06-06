@@ -347,6 +347,10 @@ class Image extends \Onimla\HTML\Image {
             . 'SUVORK5CYII=';
 
     public function __construct($alt = FALSE) {
+        if ($alt === FALSE) {
+            $alt = Title::$ending;
+        }
+
         parent::__construct($this->small, $alt);
     }
 
