@@ -29,6 +29,12 @@ class Title extends \Onimla\HTML\Element {
             $this->append(' ', self::$separator, ' ');
         }
         
+        if (strlen(self::$short) > 0) {
+            $this->appendText(self::$short, ' | ');
+        } elseif (strlen(self::$long) > 0) {
+            $this->appendText(self::$long, ' | ');
+        }
+        
         $this->appendText(self::$ending);
         
         return parent::__toString();
