@@ -22,11 +22,13 @@ class Title extends \Onimla\HTML\Element {
             $pre = self::$controller;
         } elseif (strlen(self::$view) > 0 AND strlen(self::$controller) > 0) {
             $pre = self::$view . ', ' . self::$controller;
+        } elseif (strlen(self::$controller) < 1 AND strlen(self::$view) > 0) {
+            $pre = self::$view;
         }
 
         if (strlen($pre) > 0) {
             $this->appendText($pre);
-            $this->append(' ', self::$separator, ' ');
+            $this->append(' &raquo; ');
         }
 
         if (strlen(self::$short) > 0) {
