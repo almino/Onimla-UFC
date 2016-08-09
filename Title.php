@@ -18,12 +18,12 @@ class Title extends \Onimla\HTML\Element {
     public function __toString() {
         $pre = NULL;
 
-        if (strlen(self::$controller) > 0 AND strlen(self::$view) < 1) {
-            $pre = self::$controller;
-        } elseif (strlen(self::$view) > 0 AND strlen(self::$controller) > 0) {
-            $pre = self::$view . ', ' . self::$controller;
-        } elseif (strlen(self::$controller) < 1 AND strlen(self::$view) > 0) {
-            $pre = self::$view;
+        if (strlen(static::$controller) > 0 AND strlen(static::$view) < 1) {
+            $pre = static::$controller;
+        } elseif (strlen(static::$view) > 0 AND strlen(static::$controller) > 0) {
+            $pre = static::$view . ', ' . static::$controller;
+        } elseif (strlen(static::$controller) < 1 AND strlen(static::$view) > 0) {
+            $pre = static::$view;
         }
 
         if (strlen($pre) > 0) {
@@ -31,15 +31,15 @@ class Title extends \Onimla\HTML\Element {
             $this->append(' &raquo; ');
         }
 
-        if (strlen(self::$short) > 0) {
-            $this->appendText(self::$short);
-            $this->append(' ', self::$separator, ' ');
-        } elseif (strlen(self::$long) > 0) {
-            $this->appendText(self::$long);
-            $this->append(' ', self::$separator, ' ');
+        if (strlen(static::$short) > 0) {
+            $this->appendText(static::$short);
+            $this->append(' ', static::$separator, ' ');
+        } elseif (strlen(static::$long) > 0) {
+            $this->appendText(static::$long);
+            $this->append(' ', static::$separator, ' ');
         }
 
-        $this->appendText(self::$ending);
+        $this->appendText(static::$ending);
 
         return parent::__toString();
     }
